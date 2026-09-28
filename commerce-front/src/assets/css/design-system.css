@@ -1,0 +1,418 @@
+/* ═══════════════════════════════════════════════
+   Design System — marque blanche
+   Palette par défaut : --rose-* = couleur principale, --gold-* = accent.
+   Surchargées au runtime par src/theme/brandTheme.js (réglages admin).
+   ═══════════════════════════════════════════════ */
+
+/*
+ * TYPOGRAPHIE
+ * Display : Cormorant Garamond — élégance editoriale, féminin premium
+ * Corps    : Plus Jakarta Sans  — x-height élevé, lisibilité mobile, warmth
+ *            (remplace DM Sans dont le x-height bas rendait la lecture difficile sur mobile)
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ── Couleurs principales ── */
+  --rose-50:  #fff0f5;
+  --rose-100: #ffd6e7;
+  --rose-200: #ffadd0;
+  --rose-300: #ff80b5;
+  --rose-400: #f9518a;
+  --rose-500: #e8336d;   /* Rose principal */
+  --rose-600: #c9185a;
+  --rose-700: #a3104a;
+  --rose-800: #7d0c38;
+  --rose-900: #570826;
+  --rose-500-rgb: 232, 51, 109;  /* canaux RGB, pour rgba() — surchargés par le thème */
+
+  /* ── Or rose & crème ── */
+  --gold-100: #fef7ee;
+  --gold-200: #fdecd4;
+  --gold-300: #f8d4a0;
+  --gold-400: #f0b462;
+  --gold-500: #d4905a;   /* Accent doré */
+  --gold-600: #b5733a;
+  --gold-500-rgb: 212, 144, 90;
+
+  --cream-50:  #fdfaf7;
+  --cream-100: #f8f3ed;
+  --cream-200: #f0e8dc;
+  --cream-300: #e2d5c5;
+
+  /* ── Neutres ── */
+  --gray-50:  #f9f8f8;
+  --gray-100: #f0eeed;
+  --gray-200: #e3dfde;
+  --gray-300: #c9c4c2;
+  --gray-400: #9e9896;
+  --gray-500: #726d6b;
+  --gray-600: #524f4e;
+  --gray-700: #363333;
+  --gray-800: #211f1f;
+  --gray-900: #141213;
+
+  /* ── Sémantique ── */
+  --color-primary:       var(--rose-500);
+  --color-primary-light: var(--rose-100);
+  --color-primary-dark:  var(--rose-700);
+  --color-accent:        var(--gold-500);
+  --color-bg:            var(--cream-50);
+  --color-surface:       #ffffff;
+  --color-text:          var(--gray-800);
+  --color-text-muted:    var(--gray-600);
+  --color-border:        var(--cream-300);
+  --color-border-light:  var(--cream-200);
+
+  /* ── Typographie ── */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* ── Espacements ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-9:  36px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ── Rayons ── */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
+  --radius-full: 9999px;
+
+  /* ── Ombres ── */
+  --shadow-sm:  0 1px 3px rgba(168, 50, 80, 0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 16px rgba(168, 50, 80, 0.10), 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-lg:  0 12px 40px rgba(168, 50, 80, 0.14), 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-rose: 0 8px 32px rgba(232, 51, 109, 0.22);
+
+  /* ── Transitions ── */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Z-index ── */
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-modal:    300;
+  --z-toast:    400;
+
+  /* ── Navbar height ── mis à jour dynamiquement par AppNavbar.vue */
+  --navbar-height: 136px; /* valeur initiale : 96px nav + 40px announce */
+}
+
+/* ══ Reset & Base ══
+   Doit être dans @layer base pour que les utilitaires Tailwind (@layer utilities)
+   puissent l'overrider correctement (unlayered > layered en CSS cascade).   */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Empêche toute scrollbar horizontale due à un élément qui dépasse
+     (carrousels, marquees, images, paddings négatifs…). Le scroll vertical
+     reste actif. */
+  overflow-x: hidden;
+  /* Largeur stable même si un layout interne tente de pousser. */
+  max-width: 100vw;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.72;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+/* ══ Utilitaires typographiques ══ */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* ══ Boutons ══ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-rose);
+}
+.btn-primary:hover {
+  background: var(--rose-600);
+  border-color: var(--rose-600);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 36px rgba(232, 51, 109, 0.32);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--rose-300);
+}
+.btn-outline:hover {
+  background: var(--rose-50);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--cream-200);
+  color: var(--color-primary);
+}
+
+.btn-dark {
+  background: var(--gray-800);
+  color: #fff;
+  border-color: var(--gray-800);
+}
+.btn-dark:hover {
+  background: var(--gray-900);
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 18px 40px;
+  font-size: 1rem;
+}
+
+.btn-icon {
+  padding: 12px;
+  border-radius: var(--radius-full);
+}
+
+/* ══ Badges & Tags ══ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-rose {
+  background: var(--rose-100);
+  color: var(--rose-700);
+}
+
+.badge-gold {
+  background: var(--gold-200);
+  color: var(--gold-600);
+}
+
+.badge-dark {
+  background: var(--gray-800);
+  color: #fff;
+}
+
+.badge-cream {
+  background: var(--cream-200);
+  color: var(--gray-600);
+}
+
+/* ══ Cards ══ */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+/* Hover réservé aux pointeurs fins (souris) — pas de "sticky hover" au tap tactile */
+@media (hover: hover) {
+  .card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+}
+
+/* ══ Divider décoratif ══ */
+.divider-rose {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose-400), var(--rose-200));
+  border-radius: var(--radius-full);
+}
+
+/* ══ Scrollbar ══ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-100); }
+::-webkit-scrollbar-thumb { background: var(--rose-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--rose-400); }
+
+/* ══ Sélection ══ */
+::selection {
+  background: var(--rose-200);
+  color: var(--rose-900);
+}
+
+/* ══ Focus visible ══ */
+:focus-visible {
+  outline: 2px solid var(--rose-400);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ══ Douceur mobile ══ */
+/* Supprime le flash bleu/gris au tap sur iOS/Android */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* ══ Accessibilité : réduire les animations si demandé par l'OS ══ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ══ Animations ══ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.animate-fade-up-delay-1 { animation-delay: 0.1s; }
+.animate-fade-up-delay-2 { animation-delay: 0.2s; }
+.animate-fade-up-delay-3 { animation-delay: 0.3s; }
+.animate-fade-up-delay-4 { animation-delay: 0.4s; }
+
+/* ══ Breakpoints utilitaires ══ */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 var(--space-4); }
+  .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}

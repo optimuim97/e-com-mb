@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e8336d" />
+
+    <!-- ⚠ Valeurs par défaut uniquement. Chaque page les remplace au runtime
+         via src/composables/useSeo.js. Elles restent visibles pour les robots
+         qui n'exécutent pas le JavaScript (WhatsApp, Facebook) : voir la note
+         sur le rendu côté serveur dans useSeo.js. Aucun domaine en dur ici —
+         la même image est promue de la recette vers la production. -->
+    <title>Boutique en ligne</title>
+    <meta
+      name="description"
+      content="Commandez en ligne : paiement sécurisé et livraison rapide."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/logos/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32"  href="/logos/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/logos/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logos/apple-touch-icon.png" />
+
+    <!-- ── PWA ── -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- iOS ignore le manifeste : mode plein écran et titre passent par ces
+         balises propriétaires, sans quoi « Sur l'écran d'accueil » ouvre
+         simplement Safari avec sa barre d'adresse. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Boutique" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- Open Graph — ce que lisent WhatsApp et Facebook au partage d'un lien -->
+    <meta property="og:site_name"   content="Boutique en ligne" />
+    <meta property="og:title"       content="Boutique en ligne" />
+    <meta property="og:description" content="Commandez en ligne : paiement sécurisé et livraison rapide." />
+    <meta property="og:image"       content="/og-default.jpg" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:locale"      content="fr_FR" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Boutique en ligne" />
+    <meta name="twitter:description" content="Commandez en ligne : paiement sécurisé et livraison rapide." />
+    <meta name="twitter:image"       content="/og-default.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- ── Polices ── -->
+    <!-- Cormorant Garamond : serif élégant pour les titres (style "magazine beauté") -->
+    <!-- DM Sans : sans-serif moderne pour le corps de texte -->
+    <!-- Dancing Script : cursive pour les accents (comme "Beauty" dans le logo) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js">
+        console.log("App démarrée");
+
+    </script>
+  </body>
+</html>

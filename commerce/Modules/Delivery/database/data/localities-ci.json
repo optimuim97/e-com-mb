@@ -1,0 +1,1297 @@
+[
+  {
+    "name": "Abidjan",
+    "region": "District autonome d'Abidjan",
+    "sort_order": 1,
+    "communes": [
+      "Abobo",
+      "Adjamé",
+      "Anyama",
+      "Attécoubé",
+      "Bingerville",
+      "Brofodoumé",
+      "Cocody",
+      "Koumassi",
+      "Marcory",
+      "Plateau",
+      "Port-Bouët",
+      "Songon",
+      "Treichville",
+      "Yopougon"
+    ]
+  },
+  {
+    "name": "Abengourou",
+    "region": "Indénié-Djuablin",
+    "sort_order": 2,
+    "communes": [
+      "Abengourou",
+      "Amélékia",
+      "Aniassué",
+      "Ebilassokro",
+      "Niablé",
+      "Yakassé-Féyassé",
+      "Zaranou"
+    ]
+  },
+  {
+    "name": "Aboisso",
+    "region": "Sud-Comoé",
+    "sort_order": 3,
+    "communes": [
+      "Aboisso",
+      "Adaou",
+      "Adjouan",
+      "Ayamé",
+      "Bianouan",
+      "Kouakro",
+      "Maféré",
+      "Yaou"
+    ]
+  },
+  {
+    "name": "Adiaké",
+    "region": "Sud-Comoé",
+    "sort_order": 4,
+    "communes": [
+      "Adiaké",
+      "Assinie-Mafia",
+      "Etuéboué"
+    ]
+  },
+  {
+    "name": "Adzopé",
+    "region": "La Mé",
+    "sort_order": 5,
+    "communes": [
+      "Adzopé",
+      "Agou",
+      "Annépé",
+      "Assikoi",
+      "Bécédi-Brignan",
+      "Yakassé-Mé"
+    ]
+  },
+  {
+    "name": "Agboville",
+    "region": "Agnéby-Tiassa",
+    "sort_order": 6,
+    "communes": [
+      "Aboudé",
+      "Agboville",
+      "Ananguié",
+      "Attobrou",
+      "Azaguié",
+      "Céchi",
+      "Grand-Morié",
+      "Guessiguié",
+      "Loviguié",
+      "Oress-Krobou",
+      "Rubino"
+    ]
+  },
+  {
+    "name": "Agnibilékrou",
+    "region": "Indénié-Djuablin",
+    "sort_order": 7,
+    "communes": [
+      "Agnibilékrou",
+      "Akoboissué",
+      "Damé",
+      "Duffrébo",
+      "Tanguélan"
+    ]
+  },
+  {
+    "name": "Akoupé",
+    "region": "La Mé",
+    "sort_order": 8,
+    "communes": [
+      "Afféry",
+      "Akoupé",
+      "Bécouéfin"
+    ]
+  },
+  {
+    "name": "Alépé",
+    "region": "La Mé",
+    "sort_order": 9,
+    "communes": [
+      "Aboisso-Comoé",
+      "Alépé",
+      "Allosso",
+      "Danguira",
+      "Oghlwapo"
+    ]
+  },
+  {
+    "name": "Arrah",
+    "region": "Moronou",
+    "sort_order": 10,
+    "communes": [
+      "Arrah",
+      "Kotobi",
+      "Krégbé"
+    ]
+  },
+  {
+    "name": "Attiégouakro",
+    "region": "District autonome de Yamoussoukro",
+    "sort_order": 11,
+    "communes": [
+      "Attiégouakro",
+      "Lolobo"
+    ]
+  },
+  {
+    "name": "Bangolo",
+    "region": "Guémon",
+    "sort_order": 12,
+    "communes": [
+      "Bangolo",
+      "Béoué-Zibiao",
+      "Bléniméouin",
+      "Diéouzon",
+      "Gohouo-Zagna",
+      "Guinglo-Tahouaké",
+      "Kahin-Zarabaon",
+      "Zéo",
+      "Zou"
+    ]
+  },
+  {
+    "name": "Béoumi",
+    "region": "Gbêkê",
+    "sort_order": 13,
+    "communes": [
+      "Ando-Kékrénou",
+      "Béoumi",
+      "Bodokro",
+      "Kondrobo",
+      "Lolobo",
+      "Marabadiassa",
+      "N'Guessankro"
+    ]
+  },
+  {
+    "name": "Bettié",
+    "region": "Indénié-Djuablin",
+    "sort_order": 14,
+    "communes": [
+      "Bettié",
+      "Diamarakro"
+    ]
+  },
+  {
+    "name": "Biankouma",
+    "region": "Tonkpi",
+    "sort_order": 15,
+    "communes": [
+      "Biankouma",
+      "Blapleu",
+      "Gbangbégouiné",
+      "Gbonné",
+      "Gouiné",
+      "Kpata",
+      "Santa"
+    ]
+  },
+  {
+    "name": "Bloléquin",
+    "region": "Cavally",
+    "sort_order": 16,
+    "communes": [
+      "Bloléquin",
+      "Diboké",
+      "Doké",
+      "Tinhou",
+      "Zéaglo"
+    ]
+  },
+  {
+    "name": "Bocanda",
+    "region": "N'Zi",
+    "sort_order": 17,
+    "communes": [
+      "Bengassou",
+      "Bocanda",
+      "Kouadioblékro",
+      "N'Zécrézessou"
+    ]
+  },
+  {
+    "name": "Bondoukou",
+    "region": "Gontougo",
+    "sort_order": 18,
+    "communes": [
+      "Appimandoum",
+      "Bondo",
+      "Bondoukou",
+      "Gouméré",
+      "Laoudi-Ba",
+      "Pinda-Boroko",
+      "Sapli-Sépingo",
+      "Sorobango",
+      "Tabagne",
+      "Tagadi",
+      "Taoudi",
+      "Yézimala"
+    ]
+  },
+  {
+    "name": "Bongouanou",
+    "region": "Moronou",
+    "sort_order": 19,
+    "communes": [
+      "Andé",
+      "Assié-Koumassi",
+      "Bongouanou",
+      "N'Guessankro"
+    ]
+  },
+  {
+    "name": "Bonon",
+    "region": "Marahoué",
+    "sort_order": 20,
+    "communes": [
+      "Bonon"
+    ]
+  },
+  {
+    "name": "Botro",
+    "region": "Gbêkê",
+    "sort_order": 21,
+    "communes": [
+      "Botro",
+      "Diabo",
+      "Krofoinsou",
+      "Languibonou"
+    ]
+  },
+  {
+    "name": "Bouaflé",
+    "region": "Marahoué",
+    "sort_order": 22,
+    "communes": [
+      "Bégbessou",
+      "Bouaflé",
+      "N'Douffoukankro",
+      "Pakouabo",
+      "Tibéita",
+      "Zaguiéta"
+    ]
+  },
+  {
+    "name": "Bouaké",
+    "region": "Gbêkê",
+    "sort_order": 23,
+    "communes": [
+      "Bouaké",
+      "Bounda",
+      "Brobo",
+      "Mamini",
+      "N'Djébonouan"
+    ]
+  },
+  {
+    "name": "Bouna",
+    "region": "Bounkani",
+    "sort_order": 24,
+    "communes": [
+      "Bouko",
+      "Bouna",
+      "Ondéfidouo",
+      "Youndouo"
+    ]
+  },
+  {
+    "name": "Boundiali",
+    "region": "Bagoué",
+    "sort_order": 25,
+    "communes": [
+      "Baya",
+      "Boundiali",
+      "Ganaoni",
+      "Kasséré",
+      "Siempurgo"
+    ]
+  },
+  {
+    "name": "Buyo",
+    "region": "Nawa",
+    "sort_order": 26,
+    "communes": [
+      "Buyo",
+      "Dapéoua"
+    ]
+  },
+  {
+    "name": "Dabakala",
+    "region": "Hambol",
+    "sort_order": 27,
+    "communes": [
+      "Bassawa",
+      "Boniérédougou",
+      "Dabakala",
+      "Foumbolo",
+      "Niéméné",
+      "Satama-Sokoro",
+      "Satama-Sokoura",
+      "Sokala-Sobara",
+      "Tendéné-Bambarasso",
+      "Yaossédougou"
+    ]
+  },
+  {
+    "name": "Dabou",
+    "region": "Grands-Ponts",
+    "sort_order": 28,
+    "communes": [
+      "Dabou",
+      "Lopou",
+      "Toupah"
+    ]
+  },
+  {
+    "name": "Daloa",
+    "region": "Haut-Sassandra",
+    "sort_order": 29,
+    "communes": [
+      "Bédiala",
+      "Daloa",
+      "Gadouan",
+      "Gboguhé",
+      "Gonaté",
+      "Zaïbo"
+    ]
+  },
+  {
+    "name": "Danané",
+    "region": "Tonkpi",
+    "sort_order": 30,
+    "communes": [
+      "Daleu",
+      "Danané",
+      "Gbon-Houyé",
+      "Kouan-Houlé",
+      "Mahapleu",
+      "Séileu",
+      "Zonneu"
+    ]
+  },
+  {
+    "name": "Daoukro",
+    "region": "Iffou",
+    "sort_order": 31,
+    "communes": [
+      "Akpassanou",
+      "Ananda",
+      "Daoukro",
+      "Ettrokro",
+      "N'Gattakro",
+      "Samanza"
+    ]
+  },
+  {
+    "name": "Dianra",
+    "region": "Béré",
+    "sort_order": 32,
+    "communes": [
+      "Dianra",
+      "Dianra-Village"
+    ]
+  },
+  {
+    "name": "Didiévi",
+    "region": "Bélier",
+    "sort_order": 33,
+    "communes": [
+      "Boli",
+      "Didiévi",
+      "Molonou-Blé",
+      "Raviart",
+      "Tié-N'Diékro"
+    ]
+  },
+  {
+    "name": "Dikodougou",
+    "region": "Poro",
+    "sort_order": 34,
+    "communes": [
+      "Boron",
+      "Dikodougou",
+      "Guiembé"
+    ]
+  },
+  {
+    "name": "Dimbokro",
+    "region": "N'Zi",
+    "sort_order": 35,
+    "communes": [
+      "Abigui",
+      "Diangokro",
+      "Dimbokro",
+      "Nofou"
+    ]
+  },
+  {
+    "name": "Divo",
+    "region": "Lôh-Djiboua",
+    "sort_order": 36,
+    "communes": [
+      "Chiépo",
+      "Didoko",
+      "Divo",
+      "Hiré",
+      "Nébo",
+      "Ogoudou",
+      "Zégo"
+    ]
+  },
+  {
+    "name": "Djékanou",
+    "region": "Bélier",
+    "sort_order": 37,
+    "communes": [
+      "Bonikro",
+      "Djékanou"
+    ]
+  },
+  {
+    "name": "Doropo",
+    "region": "Bounkani",
+    "sort_order": 38,
+    "communes": [
+      "Danoa",
+      "Doropo",
+      "Kalamon",
+      "Niamoué"
+    ]
+  },
+  {
+    "name": "Duékoué",
+    "region": "Guémon",
+    "sort_order": 39,
+    "communes": [
+      "Bagohouo",
+      "Duékoué",
+      "Gbapleu",
+      "Guéhiébly",
+      "Guézon"
+    ]
+  },
+  {
+    "name": "Facobly",
+    "region": "Guémon",
+    "sort_order": 40,
+    "communes": [
+      "Facobly",
+      "Guézon",
+      "Koua",
+      "Sémien",
+      "Tiény-Séably"
+    ]
+  },
+  {
+    "name": "Ferkessédougou",
+    "region": "Tchologo",
+    "sort_order": 41,
+    "communes": [
+      "Ferkessédougou",
+      "Koumbala",
+      "Togoniéré"
+    ]
+  },
+  {
+    "name": "Fresco",
+    "region": "Gbôklé",
+    "sort_order": 42,
+    "communes": [
+      "Dahiri",
+      "Fresco",
+      "Gbagbam"
+    ]
+  },
+  {
+    "name": "Gagnoa",
+    "region": "Gôh",
+    "sort_order": 43,
+    "communes": [
+      "Bayota",
+      "Dahiépa-Kéhi",
+      "Dignago",
+      "Dougroupalégnaoa",
+      "Doukouyo",
+      "Gagnoa",
+      "Galébré-Galébouo",
+      "Gnagbodougnoa",
+      "Guibéroua",
+      "Ouragahio",
+      "Sérihio",
+      "Yopohué"
+    ]
+  },
+  {
+    "name": "Gbéléban",
+    "region": "Kabadougou",
+    "sort_order": 44,
+    "communes": [
+      "Gbéléban",
+      "Samango",
+      "Seydougou"
+    ]
+  },
+  {
+    "name": "Gohitafla",
+    "region": "Marahoué",
+    "sort_order": 45,
+    "communes": [
+      "Gohitafla",
+      "Iriéfla",
+      "Maminigui"
+    ]
+  },
+  {
+    "name": "Grand-Bassam",
+    "region": "Sud-Comoé",
+    "sort_order": 46,
+    "communes": [
+      "Bongo",
+      "Bonoua",
+      "Grand-Bassam"
+    ]
+  },
+  {
+    "name": "Grand-Lahou",
+    "region": "Grands-Ponts",
+    "sort_order": 47,
+    "communes": [
+      "Ahouanou",
+      "Bacanda",
+      "Ebonou",
+      "Grand-Lahou",
+      "Toukouzou"
+    ]
+  },
+  {
+    "name": "Guéyo",
+    "region": "Nawa",
+    "sort_order": 48,
+    "communes": [
+      "Dabouyo",
+      "Guéyo"
+    ]
+  },
+  {
+    "name": "Guiglo",
+    "region": "Cavally",
+    "sort_order": 49,
+    "communes": [
+      "Bédy-Goazon",
+      "Guiglo",
+      "Kaadé",
+      "Nizahon"
+    ]
+  },
+  {
+    "name": "Guitry",
+    "region": "Lôh-Djiboua",
+    "sort_order": 50,
+    "communes": [
+      "Dairo-Didizo",
+      "Guitry",
+      "Lauzoua",
+      "Yocoboué"
+    ]
+  },
+  {
+    "name": "Issia",
+    "region": "Haut-Sassandra",
+    "sort_order": 51,
+    "communes": [
+      "Boguédia",
+      "Iboguhé",
+      "Issia",
+      "Nahio",
+      "Namané",
+      "Saïoua",
+      "Tapéguia"
+    ]
+  },
+  {
+    "name": "Jacqueville",
+    "region": "Grands-Ponts",
+    "sort_order": 52,
+    "communes": [
+      "Attoutou",
+      "Jacqueville"
+    ]
+  },
+  {
+    "name": "Kani",
+    "region": "Worodougou",
+    "sort_order": 53,
+    "communes": [
+      "Djibrosso",
+      "Fadiadougou",
+      "Kani",
+      "Morondo"
+    ]
+  },
+  {
+    "name": "Kaniasso",
+    "region": "Folon",
+    "sort_order": 54,
+    "communes": [
+      "Goulia",
+      "Kaniasso",
+      "Mahandiana-Sokourani"
+    ]
+  },
+  {
+    "name": "Katiola",
+    "region": "Hambol",
+    "sort_order": 55,
+    "communes": [
+      "Fronan",
+      "Katiola",
+      "Timbé"
+    ]
+  },
+  {
+    "name": "Kong",
+    "region": "Tchologo",
+    "sort_order": 56,
+    "communes": [
+      "Bilimono",
+      "Kong",
+      "Nafana",
+      "Sikolo"
+    ]
+  },
+  {
+    "name": "Korhogo",
+    "region": "Poro",
+    "sort_order": 57,
+    "communes": [
+      "Dassoungboho",
+      "Kanoroba",
+      "Karakoro",
+      "Kiémou",
+      "Kombolokoura",
+      "Komborodougou",
+      "Koni",
+      "Korhogo",
+      "Lataha",
+      "Nafoun",
+      "Napiéolédougou",
+      "N'Ganon",
+      "Niofoin",
+      "Sirasso",
+      "Sohouo",
+      "Tioroniaradougou"
+    ]
+  },
+  {
+    "name": "Koro",
+    "region": "Bafing",
+    "sort_order": 58,
+    "communes": [
+      "Booko",
+      "Borotou",
+      "Koro",
+      "Mahandougou",
+      "Niokosso"
+    ]
+  },
+  {
+    "name": "Kouassi-Kouassikro",
+    "region": "N'Zi",
+    "sort_order": 59,
+    "communes": [
+      "Kouassi-Kouassikro",
+      "Mékro"
+    ]
+  },
+  {
+    "name": "Kouibly",
+    "region": "Guémon",
+    "sort_order": 60,
+    "communes": [
+      "Kouibly",
+      "Nidrou",
+      "Ouyably-Gnondrou",
+      "Totrodrou"
+    ]
+  },
+  {
+    "name": "Koun-Fao",
+    "region": "Gontougo",
+    "sort_order": 61,
+    "communes": [
+      "Boahia",
+      "Kokomian",
+      "Kouassi-Datékro",
+      "Koun-Fao",
+      "Tankessé",
+      "Tienkoikro"
+    ]
+  },
+  {
+    "name": "Kounahiri",
+    "region": "Béré",
+    "sort_order": 62,
+    "communes": [
+      "Kongasso",
+      "Kounahiri"
+    ]
+  },
+  {
+    "name": "Kouto",
+    "region": "Bagoué",
+    "sort_order": 63,
+    "communes": [
+      "Blességué",
+      "Gbon",
+      "Kolia",
+      "Kouto",
+      "Sianhala"
+    ]
+  },
+  {
+    "name": "Lakota",
+    "region": "Lôh-Djiboua",
+    "sort_order": 64,
+    "communes": [
+      "Djidji",
+      "Gagoré",
+      "Goudouko",
+      "Lakota",
+      "Niambézaaria",
+      "Zikisso"
+    ]
+  },
+  {
+    "name": "M'Bahiakro",
+    "region": "Iffou",
+    "sort_order": 65,
+    "communes": [
+      "Bonguéra",
+      "Kondossou",
+      "M'Bahiakro"
+    ]
+  },
+  {
+    "name": "M'Batto",
+    "region": "Moronou",
+    "sort_order": 66,
+    "communes": [
+      "Anoumaba",
+      "Assahara",
+      "M'Batto",
+      "Tiémélékro"
+    ]
+  },
+  {
+    "name": "M'Bengué",
+    "region": "Poro",
+    "sort_order": 67,
+    "communes": [
+      "Bougou",
+      "Katiali",
+      "Katogo",
+      "M'Bengué"
+    ]
+  },
+  {
+    "name": "Madinani",
+    "region": "Kabadougou",
+    "sort_order": 68,
+    "communes": [
+      "Fengolo",
+      "Madinani",
+      "N'Goloblasso"
+    ]
+  },
+  {
+    "name": "Man",
+    "region": "Tonkpi",
+    "sort_order": 69,
+    "communes": [
+      "Bogouiné",
+      "Fagnampleu",
+      "Gbangbégouiné-Yati",
+      "Logoualé",
+      "Man",
+      "Podiagouiné",
+      "Sandougou-Soba",
+      "Sangouiné",
+      "Yapleu",
+      "Zagoué",
+      "Ziogouiné"
+    ]
+  },
+  {
+    "name": "Mankono",
+    "region": "Béré",
+    "sort_order": 70,
+    "communes": [
+      "Bouandougou",
+      "Mankono",
+      "Marandallah",
+      "Sarhala",
+      "Tiéningboué"
+    ]
+  },
+  {
+    "name": "Méagui",
+    "region": "Nawa",
+    "sort_order": 71,
+    "communes": [
+      "Gnanmangui",
+      "Méagui",
+      "Oupoyo"
+    ]
+  },
+  {
+    "name": "Minignan",
+    "region": "Folon",
+    "sort_order": 72,
+    "communes": [
+      "Kimbirila-Nord",
+      "Minignan",
+      "Sokoro",
+      "Tienko"
+    ]
+  },
+  {
+    "name": "Nassian",
+    "region": "Bounkani",
+    "sort_order": 73,
+    "communes": [
+      "Bogofa",
+      "Kakpin",
+      "Koutouba",
+      "Nassian",
+      "Sominassé"
+    ]
+  },
+  {
+    "name": "Niakaramandougou",
+    "region": "Hambol",
+    "sort_order": 74,
+    "communes": [
+      "Arikokaha",
+      "Badikaha",
+      "Niakaramandougou",
+      "Niédiékaha",
+      "Tafiré",
+      "Tortiya"
+    ]
+  },
+  {
+    "name": "Odienné",
+    "region": "Kabadougou",
+    "sort_order": 75,
+    "communes": [
+      "Bako",
+      "Bougousso",
+      "Dioulatièdougou",
+      "Odienné",
+      "Tiémé"
+    ]
+  },
+  {
+    "name": "Ouangolodougou",
+    "region": "Tchologo",
+    "sort_order": 76,
+    "communes": [
+      "Diawala",
+      "Kaouara",
+      "Niellé",
+      "Ouangolodougou",
+      "Toumoukoro"
+    ]
+  },
+  {
+    "name": "Ouaninou",
+    "region": "Bafing",
+    "sort_order": 77,
+    "communes": [
+      "Gbélo",
+      "Gouékan",
+      "Koonan",
+      "Ouaninou",
+      "Saboudougou",
+      "Santa"
+    ]
+  },
+  {
+    "name": "Ouellé",
+    "region": "Iffou",
+    "sort_order": 78,
+    "communes": [
+      "Ouellé"
+    ]
+  },
+  {
+    "name": "Oumé",
+    "region": "Gôh",
+    "sort_order": 79,
+    "communes": [
+      "Diégonéfla",
+      "Guépahouo",
+      "Oumé",
+      "Tonla"
+    ]
+  },
+  {
+    "name": "Prikro",
+    "region": "Iffou",
+    "sort_order": 80,
+    "communes": [
+      "Anianou",
+      "Famienkro",
+      "Koffi-Amonkro",
+      "Nafana",
+      "Prikro"
+    ]
+  },
+  {
+    "name": "Sakassou",
+    "region": "Gbêkê",
+    "sort_order": 81,
+    "communes": [
+      "Ayaou-Sran",
+      "Dibri-Assirikro",
+      "Sakassou",
+      "Toumodi-Sakassou"
+    ]
+  },
+  {
+    "name": "Samatiguila",
+    "region": "Kabadougou",
+    "sort_order": 82,
+    "communes": [
+      "Kimbirila-Sud",
+      "Samatiguila"
+    ]
+  },
+  {
+    "name": "San-Pédro",
+    "region": "San-Pédro",
+    "sort_order": 83,
+    "communes": [
+      "Doba",
+      "Dogbo",
+      "Gabiadji",
+      "Grand-Béréby",
+      "San-Pédro"
+    ]
+  },
+  {
+    "name": "Sandégué",
+    "region": "Gontougo",
+    "sort_order": 84,
+    "communes": [
+      "Bandakagni-Tomora",
+      "Dimandougou",
+      "Sandégué",
+      "Yorobodi"
+    ]
+  },
+  {
+    "name": "Sassandra",
+    "region": "Gbôklé",
+    "sort_order": 85,
+    "communes": [
+      "Dakpadou",
+      "Grihiri",
+      "Lobakuya",
+      "Médon",
+      "Sago",
+      "Sassandra"
+    ]
+  },
+  {
+    "name": "Séguéla",
+    "region": "Worodougou",
+    "sort_order": 86,
+    "communes": [
+      "Bobi-Diarabana",
+      "Dualla",
+      "Kamalo",
+      "Massala",
+      "Séguéla",
+      "Sifié",
+      "Worofla"
+    ]
+  },
+  {
+    "name": "Séguélon",
+    "region": "Kabadougou",
+    "sort_order": 87,
+    "communes": [
+      "Gbongaha",
+      "Séguélon"
+    ]
+  },
+  {
+    "name": "Sikensi",
+    "region": "Agnéby-Tiassa",
+    "sort_order": 88,
+    "communes": [
+      "Gomon",
+      "Sikensi"
+    ]
+  },
+  {
+    "name": "Sinématiali",
+    "region": "Poro",
+    "sort_order": 89,
+    "communes": [
+      "Bouakaha",
+      "Kagbolodougou",
+      "Sédiego",
+      "Sinématiali"
+    ]
+  },
+  {
+    "name": "Sinfra",
+    "region": "Marahoué",
+    "sort_order": 90,
+    "communes": [
+      "Bazré",
+      "Kononfla",
+      "Kouétinfla",
+      "Sinfra"
+    ]
+  },
+  {
+    "name": "Sipilou",
+    "region": "Tonkpi",
+    "sort_order": 91,
+    "communes": [
+      "Sipilou",
+      "Yorodougou"
+    ]
+  },
+  {
+    "name": "Soubré",
+    "region": "Nawa",
+    "sort_order": 92,
+    "communes": [
+      "Grand-Zattry",
+      "Liliyo",
+      "Okrouyo",
+      "Soubré"
+    ]
+  },
+  {
+    "name": "Taabo",
+    "region": "Agnéby-Tiassa",
+    "sort_order": 93,
+    "communes": [
+      "Pacobo",
+      "Taabo"
+    ]
+  },
+  {
+    "name": "Tabou",
+    "region": "San-Pédro",
+    "sort_order": 94,
+    "communes": [
+      "Dapo-Iboké",
+      "Djamandioké",
+      "Djouroutou",
+      "Grabo",
+      "Olodio",
+      "Tabou"
+    ]
+  },
+  {
+    "name": "Taï",
+    "region": "Cavally",
+    "sort_order": 95,
+    "communes": [
+      "Taï",
+      "Zagné"
+    ]
+  },
+  {
+    "name": "Tanda",
+    "region": "Gontougo",
+    "sort_order": 96,
+    "communes": [
+      "Amanvi",
+      "Diamba",
+      "Tanda",
+      "Tchédio"
+    ]
+  },
+  {
+    "name": "Téhini",
+    "region": "Bounkani",
+    "sort_order": 97,
+    "communes": [
+      "Gogo",
+      "Téhini",
+      "Tougbo"
+    ]
+  },
+  {
+    "name": "Tengréla",
+    "region": "Bagoué",
+    "sort_order": 98,
+    "communes": [
+      "Débété",
+      "Kanakono",
+      "Papara",
+      "Tengréla"
+    ]
+  },
+  {
+    "name": "Tiapoum",
+    "region": "Sud-Comoé",
+    "sort_order": 99,
+    "communes": [
+      "Noé",
+      "Nouamou",
+      "Tiapoum"
+    ]
+  },
+  {
+    "name": "Tiassalé",
+    "region": "Agnéby-Tiassa",
+    "sort_order": 100,
+    "communes": [
+      "Gbolouville",
+      "Morokro",
+      "N'Douci",
+      "Tiassalé"
+    ]
+  },
+  {
+    "name": "Tiébissou",
+    "region": "Bélier",
+    "sort_order": 101,
+    "communes": [
+      "Lomokankro",
+      "Molonou",
+      "Tiébissou",
+      "Yakpabo-Sakassou"
+    ]
+  },
+  {
+    "name": "Touba",
+    "region": "Bafing",
+    "sort_order": 102,
+    "communes": [
+      "Dioman",
+      "Foungbesso",
+      "Guintéguéla",
+      "Touba"
+    ]
+  },
+  {
+    "name": "Toulépleu",
+    "region": "Cavally",
+    "sort_order": 103,
+    "communes": [
+      "Bakoubli",
+      "Méo",
+      "Nézobly",
+      "Péhé",
+      "Tiobly",
+      "Toulépleu"
+    ]
+  },
+  {
+    "name": "Toumodi",
+    "region": "Bélier",
+    "sort_order": 104,
+    "communes": [
+      "Angoda",
+      "Kokumbo",
+      "Kpouèbo",
+      "Toumodi"
+    ]
+  },
+  {
+    "name": "Transua",
+    "region": "Gontougo",
+    "sort_order": 105,
+    "communes": [
+      "Assuéfry",
+      "Kouassia-Niaguini",
+      "Transua"
+    ]
+  },
+  {
+    "name": "Vavoua",
+    "region": "Haut-Sassandra",
+    "sort_order": 106,
+    "communes": [
+      "Bazra-Nattis",
+      "Dananon",
+      "Dania",
+      "Kétro-Bassam",
+      "Séitifla",
+      "Vavoua"
+    ]
+  },
+  {
+    "name": "Yakassé-Attobrou",
+    "region": "La Mé",
+    "sort_order": 107,
+    "communes": [
+      "Abongoua",
+      "Biéby",
+      "Yakassé-Attobrou"
+    ]
+  },
+  {
+    "name": "Yamoussoukro",
+    "region": "District autonome de Yamoussoukro",
+    "sort_order": 108,
+    "communes": [
+      "Kossou",
+      "Yamoussoukro"
+    ]
+  },
+  {
+    "name": "Zouan-Hounien",
+    "region": "Tonkpi",
+    "sort_order": 109,
+    "communes": [
+      "Banneu",
+      "Bin-Houyé",
+      "Goulaleu",
+      "Téapleu",
+      "Yelleu",
+      "Zouan-Hounien"
+    ]
+  },
+  {
+    "name": "Zoukougbeu",
+    "region": "Haut-Sassandra",
+    "sort_order": 110,
+    "communes": [
+      "Domangbeu",
+      "Grégbeu",
+      "Guessabo",
+      "Zoukougbeu"
+    ]
+  },
+  {
+    "name": "Zuénoula",
+    "region": "Marahoué",
+    "sort_order": 111,
+    "communes": [
+      "Kanzra",
+      "Vouéboufla",
+      "Zanzra",
+      "Zuénoula"
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "name": "Ma Boutique",
+  "short_name": "Boutique",
+  "description": "Commandez en ligne : paiement sécurisé et livraison rapide.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#e8336d",
+  "categories": ["shopping"],
+  "icons": [
+    {
+      "src": "/logos/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logos/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Boutique",
+      "short_name": "Boutique",
+      "url": "/products?source=pwa",
+      "icons": [{ "src": "/logos/favicon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Mon panier",
+      "short_name": "Panier",
+      "url": "/cart?source=pwa",
+      "icons": [{ "src": "/logos/favicon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Mes commandes",
+      "short_name": "Commandes",
+      "url": "/orders?source=pwa",
+      "icons": [{ "src": "/logos/favicon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

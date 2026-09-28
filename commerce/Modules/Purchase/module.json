@@ -1,0 +1,12 @@
+{
+    "name": "Purchase",
+    "alias": "purchase",
+    "description": "Achats fournisseurs, prix de revient et coût moyen pondéré.",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Purchase\\Providers\\PurchaseServiceProvider"
+    ],
+    "aliases": {},
+    "files": []
+}

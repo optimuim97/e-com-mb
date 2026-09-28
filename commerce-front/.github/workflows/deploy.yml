@@ -1,0 +1,202 @@
+# ══════════════════════════════════════════════════════════════════════
+# Frontend — construction de l'image, déploiement
+#
+#   push sur main    →  image GHCR → PRODUCTION → vérification
+#   « Run workflow » →  rejoue une image précise en production
+#
+# Marque blanche : un dépôt par boutique cliente. Tout ce qui est propre
+# à la boutique vient des variables du dépôt (Settings → Secrets and
+# variables → Actions → Variables) :
+#   IMAGE_NAME       nom de l'image GHCR           (défaut : boutique-web)
+#   APP_DIR          dossier de l'instance sur le VPS (défaut : /var/www/boutique)
+#   STAGING_ENABLED  « true » pour déployer d'abord en recette
+#   STAGING_URL      URL publique de la recette
+#   PRODUCTION_URL   URL publique de la production — vide : aucun déploiement
+#
+# Le dépôt modèle lui-même ne définit pas PRODUCTION_URL : un push sur le
+# modèle construit l'image mais ne déploie nulle part.
+#
+# L'image ne contient aucune référence au domaine : la même image sert la
+# recette et la production. Pour revenir en arrière, relancer le workflow
+# en indiquant le tag précédent (« sha-xxxxxxx »).
+#
+# Secrets requis (Settings → Secrets and variables → Actions) :
+#   Recette     VPS_HOST · VPS_USER · VPS_SSH_KEY · VPS_PORT (optionnel)
+#   Production  PROD_VPS_HOST · PROD_VPS_USER · PROD_VPS_SSH_KEY
+#   Commun      REVERB_APP_KEY (identifiant public Reverb, compilé au build)
+# ══════════════════════════════════════════════════════════════════════
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy_production:
+        description: "Déployer en production"
+        type: boolean
+        default: false
+      tag:
+        description: "Tag à promouvoir (vide = image construite par ce run)"
+        type: string
+        default: ""
+
+concurrency:
+  group: frontend-pipeline
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/${{ github.repository_owner }}/${{ vars.IMAGE_NAME || 'boutique-web' }}
+  APP_DIR: ${{ vars.APP_DIR || '/var/www/boutique' }}
+
+jobs:
+
+  # ── Construction et publication de l'image ──────────────────────────
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      tag: ${{ steps.meta.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tag de l'image
+        id: meta
+        run: echo "tag=sha-$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Connexion à GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build et publication
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          build-args: |
+            VITE_REVERB_APP_KEY=${{ secrets.REVERB_APP_KEY }}
+          tags: |
+            ${{ env.IMAGE }}:${{ steps.meta.outputs.tag }}
+            ${{ env.IMAGE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ── Recette : automatique à chaque push sur main ────────────────────
+  deploy-staging:
+    needs: build
+    # Désactivée : le VPS de recette est suspendu par LWS. La production
+    # ne dépend donc plus d'elle. Pour la rétablir le jour où une recette
+    # existe de nouveau : Settings → Variables → STAGING_ENABLED = true.
+    # Rien d'autre à changer — le garde-fou ci-dessous se réactive seul.
+    if: github.event_name == 'push' && vars.STAGING_ENABLED == 'true' && vars.STAGING_URL != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: staging
+      url: ${{ vars.STAGING_URL }}
+    steps:
+      - name: Déploiement sur le VPS de recette
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_USER:  ${{ github.actor }}
+          IMAGE_TAG:  ${{ needs.build.outputs.tag }}
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          command_timeout: 20m
+          envs: GHCR_TOKEN,GHCR_USER,IMAGE_TAG,APP_DIR
+          script: |
+            set -e
+            echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
+            cd "$APP_DIR"
+            bash deploy.sh --only web "$IMAGE_TAG"
+
+      # Dernier filet avant la boutique : si la recette ne répond plus
+      # correctement, l'étape échoue et la production n'est pas touchée.
+      - name: Vérification de la recette
+        run: |
+          set -e
+          for chemin in / /a-propos /api/home/stats; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 --retry 3 --retry-delay 5 \
+                   "${{ vars.STAGING_URL }}${chemin}")
+            echo "  ${chemin} -> ${code}"
+            [ "$code" = "200" ] || { echo "::error::Recette en échec sur ${chemin} (HTTP ${code})"; exit 1; }
+          done
+
+  # ── Production ──────────────────────────────────────────────────────
+  # Déploie dès que l'image est construite. Si la recette est active, elle
+  # doit d'abord passer ; si elle est désactivée (job « skipped »), la
+  # production suit directement le build. Un échec de recette bloque
+  # toujours — « skipped » et « failure » ne sont pas la même chose.
+  # Reste déclenchable à la main pour rejouer une image (retour arrière).
+  deploy-production:
+    needs: [build, deploy-staging]
+    if: >-
+      always()
+      && needs.build.result == 'success'
+      && vars.PRODUCTION_URL != ''
+      && (
+        (github.event_name == 'push'
+          && (needs.deploy-staging.result == 'success'
+              || needs.deploy-staging.result == 'skipped'))
+        || (github.event_name == 'workflow_dispatch' && inputs.deploy_production)
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: production
+      url: ${{ vars.PRODUCTION_URL }}
+    steps:
+      - name: Déploiement sur le VPS de production
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_USER:  ${{ github.actor }}
+          IMAGE_TAG:  ${{ inputs.tag || needs.build.outputs.tag }}
+        with:
+          host: ${{ secrets.PROD_VPS_HOST }}
+          username: ${{ secrets.PROD_VPS_USER }}
+          key: ${{ secrets.PROD_VPS_SSH_KEY }}
+          port: ${{ secrets.PROD_VPS_PORT || 22 }}
+          command_timeout: 20m
+          envs: GHCR_TOKEN,GHCR_USER,IMAGE_TAG,APP_DIR
+          script: |
+            set -e
+            echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
+            cd "$APP_DIR"
+            bash deploy.sh --only web "$IMAGE_TAG"
+
+      # La boutique doit répondre après déploiement. Un échec ici rend le
+      # run rouge : la panne est signalée au lieu de passer inaperçue.
+      - name: Vérification de la production
+        run: |
+          set -e
+          for chemin in / /a-propos /api/home/stats; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 --retry 3 --retry-delay 5 \
+                   "${{ vars.PRODUCTION_URL }}${chemin}")
+            echo "  ${chemin} -> ${code}"
+            [ "$code" = "200" ] || { echo "::error::Production en échec sur ${chemin} (HTTP ${code})"; exit 1; }
+          done
+
+      # Sans recette, la panne se découvre en production. Le retour arrière
+      # doit donc être immédiat : le tag précédent est rappelé ici pour
+      # n'avoir ni à le chercher ni à se connecter au serveur.
+      - name: Retour arrière — marche à suivre
+        if: failure()
+        run: |
+          echo "::error::La boutique ne répond pas. Revenir au tag précédent :"
+          echo "  Actions → CI/CD → Run workflow"
+          echo "  tag = le sha-xxxxxxx du dernier run vert"
+          echo "  cocher « Déployer en production »"
+          echo "Tag qui vient d'être déployé : ${{ inputs.tag || needs.build.outputs.tag }}"

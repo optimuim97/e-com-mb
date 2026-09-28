@@ -1,0 +1,15 @@
+{
+    "Auth": true,
+    "Catalog": true,
+    "Cart": true,
+    "Order": true,
+    "Payment": true,
+    "Coupon": true,
+    "Customer": true,
+    "Admin": true,
+    "Wishlist": true,
+    "Delivery": true,
+    "Newsletter": true,
+    "Promo": true,
+    "Purchase": true
+}

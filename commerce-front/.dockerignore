@@ -1,0 +1,14 @@
+.git
+.github
+.claude
+node_modules
+# dist est recompilé dans l'image — ne jamais embarquer la version commitée
+dist
+# Les .env de dev ne doivent pas fuiter dans le build : les valeurs de
+# production sont passées en ARG/ENV par le Dockerfile.
+.env
+.env.*
+*.log
+playwright.config.js
+tests/
+

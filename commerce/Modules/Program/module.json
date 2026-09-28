@@ -1,0 +1,12 @@
+{
+    "name": "Program",
+    "alias": "program",
+    "description": "Club fidélité — Programme de fidélité, consultations, tracker routine",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Program\\Providers\\ProgramServiceProvider"
+    ],
+    "aliases": {},
+    "files": []
+}

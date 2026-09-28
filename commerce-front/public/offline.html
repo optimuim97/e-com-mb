@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e8336d" />
+    <meta name="robots" content="noindex" />
+    <title>Hors connexion</title>
+    <style>
+      :root { color-scheme: light; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: #fdfaf8;
+        color: #3d3230;
+        font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        text-align: center;
+      }
+      .card { max-width: 380px; }
+      img { width: 120px; height: auto; margin: 0 auto 28px; display: block; }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #1a1a1a;
+      }
+      p { font-size: 0.9375rem; line-height: 1.6; color: #7a6e6a; }
+      button {
+        margin-top: 28px;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 999px;
+        background: #e8336d;
+        color: #fff;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        font-family: inherit;
+        cursor: pointer;
+      }
+      button:hover { background: #c0386b; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="/logos/favicon-192.png" alt="" width="96" height="96" />
+      <h1>Vous êtes hors connexion</h1>
+      <p>
+        Impossible de joindre la boutique pour le moment. Vérifiez votre
+        connexion — vos articles enregistrés vous attendent.
+      </p>
+      <button onclick="location.reload()">Réessayer</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,896 @@
+@import 'tailwindcss';
+
+/* ═══════════════════════════════════════════════
+   Tailwind theme bridge
+   Pont entre Tailwind v4 et le design-system de la boutique.
+   Garde la compat des classes existantes
+   (.btn-primary, .card, .input, .label, .badge-*)
+   mais en les habillant en rose hibiscus + crème.
+   ═══════════════════════════════════════════════ */
+
+@theme {
+  --color-primary-50:  var(--rose-50);
+  --color-primary-100: var(--rose-100);
+  --color-primary-200: var(--rose-200);
+  --color-primary-300: var(--rose-300);
+  --color-primary-400: var(--rose-400);
+  --color-primary-500: var(--rose-500);
+  --color-primary-600: var(--rose-600);
+  --color-primary-700: var(--rose-700);
+  --color-primary-800: var(--rose-800);
+  --color-primary-900: var(--rose-900);
+
+  --font-sans:    'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-script:  'Dancing Script', 'Brush Script MT', cursive;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+    font-family: var(--font-body, var(--font-sans));
+    color: var(--color-text);
+    background: var(--color-bg);
+    font-feature-settings: 'ss01', 'cv02', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, .display-xl, .display-lg, .display-md {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  /* Accent cursive utility */
+  .font-script { font-family: var(--font-script); font-weight: 600; }
+  /* Italique élégant pour mots-clés (eg. "naturelle" dans le hero) */
+  em, .em-script {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rose-500);
+  }
+}
+
+@layer components {
+  /* ── Boutons ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    background: var(--rose-500);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    border: 1.5px solid var(--rose-500);
+    box-shadow: var(--shadow-rose);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--rose-600);
+    border-color: var(--rose-600);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 36px rgba(var(--rose-500-rgb), 0.32);
+  }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--rose-600);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1.5px solid var(--rose-300);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn-outline:hover:not(:disabled) {
+    background: var(--rose-50);
+    border-color: var(--rose-500);
+    transform: translateY(-1px);
+  }
+  .btn-outline:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2;
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--gray-600);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1.5px solid transparent;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--cream-200);
+    color: var(--rose-600);
+  }
+
+  .label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+    transition: box-shadow var(--transition-normal);
+  }
+  .card-hover {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+  }
+  /* Hover uniquement sur périphériques à pointeur fin (souris) :
+     évite le "sticky hover" qui garde la carte soulevée après un tap tactile. */
+  @media (hover: hover) {
+    .card-hover:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--rose-200);
+    }
+  }
+
+  /* ── Badges (compat anciens noms + variantes de la marque) ──
+     Toutes les variantes répètent les propriétés de base
+     (Tailwind v4 n'autorise pas @apply sur une classe définie
+      dans le même layer). */
+  .badge,
+  .badge-primary,
+  .badge-success,
+  .badge-warning,
+  .badge-danger,
+  .badge-gray,
+  .badge-rose,
+  .badge-gold,
+  .badge-dark,
+  .badge-cream {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge-primary { background: var(--rose-100); color: var(--rose-700); }
+  .badge-success { background: #dcfce7;          color: #15803d;        }
+  .badge-warning { background: var(--gold-200);  color: var(--gold-600);}
+  .badge-danger  { background: #fee2e2;          color: #b91c1c;        }
+  .badge-gray    { background: var(--cream-200); color: var(--gray-600);}
+  .badge-rose    { background: var(--rose-100);  color: var(--rose-700);}
+  .badge-gold    { background: var(--gold-200);  color: var(--gold-600);}
+  .badge-dark    { background: var(--gray-800);  color: #fff;           }
+  .badge-cream   { background: var(--cream-200); color: var(--gray-600);}
+  /* Informatif, sans jugement : un ajustement d'inventaire ou un retour
+     ne sont ni un succès ni une alerte. */
+  .badge-blue    { background: #dbeafe;          color: #1d4ed8;        }
+
+  /* ── Nav links (admin sidebar) ── */
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-500);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    background: var(--rose-50);
+    color: var(--rose-600);
+  }
+  .nav-link-active {
+    background: var(--rose-50);
+    color: var(--rose-600);
+    font-weight: 600;
+  }
+  .nav-link-active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 3px;
+    height: 18px;
+    background: var(--rose-500);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+}
+
+  /* ── Spinner global ──
+     Usage : <span class="spinner"></span>
+     Plus besoin de redéfinir @keyframes spin dans chaque vue. */
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+  }
+  .spinner--rose {
+    border-color: var(--rose-100);
+    border-top-color: var(--rose-500);
+  }
+  .spinner--sm { width: 14px; height: 14px; }
+  .spinner--lg { width: 28px; height: 28px; }
+
+  /* ── Loader centré (pages) ── */
+  .loader-wrap {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-12) 0;
+  }
+  .loader {
+    width: 28px; height: 28px;
+    border: 2px solid var(--rose-100);
+    border-top-color: var(--rose-500);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    text-align: center;
+    padding: var(--space-12) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--gray-400);
+  }
+  .empty-state__icon { display: flex; justify-content: center; font-size: 2rem; line-height: 1; }
+  .empty-state p { font-size: 0.9375rem; }
+
+  /* ── Icon buttons (tables admin) ── */
+  .icon-btn {
+    width: 32px; height: 32px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+  }
+  .icon-btn--edit  { color: var(--rose-500); }
+  .icon-btn--edit:hover  { background: var(--rose-50); }
+  .icon-btn--delete { color: #ef4444; }
+  .icon-btn--delete:hover { background: #fee2e2; }
+
+  /* ── Toggle switch ── */
+  .toggle {
+    width: 44px; height: 24px;
+    border-radius: var(--radius-full);
+    background: var(--cream-300);
+    position: relative;
+    transition: background var(--transition-fast);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .toggle--on { background: var(--rose-500); }
+  .toggle__dot {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform var(--transition-fast);
+  }
+  .toggle--on .toggle__dot { transform: translateX(20px); }
+
+  /* ── Admin table ── */
+  .admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.8125rem;
+  }
+  /* Conteneur scrollable — sticky thead reste visible lors du scroll */
+  .table-scroll {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ede9e4 transparent;
+  }
+  .admin-table thead th {
+    text-align: left;
+    padding: 9px 14px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9e9490;
+    position: sticky;
+    top: 0;
+    background: #faf8f6;
+    z-index: 2;
+    border-bottom: 1px solid #ede9e4;
+    white-space: nowrap;
+  }
+  .admin-table tbody tr { transition: background 0.1s; }
+  .admin-table tbody tr:hover { background: #fff5f8; }
+  .admin-table tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #f3efeb;
+    color: #5a5250;
+    line-height: 1.4;
+    vertical-align: middle;
+  }
+  .admin-table tbody tr:last-child td { border-bottom: none; }
+
+  .admin-table__bold   { font-weight: 600; color: #2d2a28; }
+  .admin-table__mono   { font-family: ui-monospace, 'Cascadia Code', monospace; font-size: 0.75rem; color: #8a8280; letter-spacing: 0.02em; }
+  .admin-table__actions { display: flex; gap: 6px; justify-content: flex-end; align-items: center; }
+
+  /* Row "détails inline" */
+  .admin-table tbody tr.admin-table__row--expanded > td {
+    border-bottom: none;
+    background: #fff5f8;
+  }
+  .admin-table tbody tr.admin-table__detail-row > td {
+    padding: 0;
+    background: #fdfaf7;
+    border-bottom: 1px solid #ede9e4;
+  }
+
+  /* ── Boutons taille compacte (tables) ── */
+  .btn-xs {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.4;
+    transition: all 0.12s;
+  }
+  .btn-xs.btn-primary {
+    background: var(--rose-500, var(--rose-500));
+    color: #fff;
+    border: 1px solid var(--rose-500, var(--rose-500));
+    padding: 4px 10px;
+    border-radius: 6px;
+    box-shadow: none;
+  }
+  .btn-xs.btn-primary:hover { background: var(--rose-600, var(--rose-600)); border-color: var(--rose-600, var(--rose-600)); transform: none; box-shadow: none; }
+  .btn-xs.btn-outline {
+    background: transparent;
+    color: var(--rose-600, var(--rose-600));
+    border: 1px solid var(--rose-200, var(--rose-100));
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .btn-xs.btn-outline:hover { background: #fff5f8; border-color: var(--rose-400, var(--rose-400)); transform: none; }
+  .btn-xs.btn-ghost {
+    background: transparent;
+    color: #6b6560;
+    border: 1px solid #ede9e4;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .btn-xs.btn-ghost:hover { background: #f5f4f2; color: #2d2a28; transform: none; }
+
+  .btn-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.4;
+    transition: all 0.12s;
+  }
+  .btn-sm.btn-primary { padding: 7px 14px; border-radius: 8px; box-shadow: none; }
+  .btn-sm.btn-primary:hover { transform: none; box-shadow: none; }
+  .btn-sm.btn-outline { padding: 7px 14px; border-radius: 8px; }
+  .btn-sm.btn-outline:hover { transform: none; }
+
+  /* ── Admin page header ── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .page-header__title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #2d2a28;
+    margin: 0;
+  }
+  /* Sous-titre d'écran : à quoi sert la page, en une phrase. */
+  .page-header__sub {
+    font-size: 0.8125rem;
+    color: var(--gray-500);
+    max-width: 66ch;
+    margin: 4px 0 0;
+    line-height: 1.5;
+  }
+
+  /* ── Cartes de chiffres (en-tête d'écran) ──
+     Le motif existait déjà, redéfini dans chaque écran qui s'en sert. Posé ici
+     pour que le suivant n'ait plus à le recopier — et parce que l'écran des
+     mouvements de stock, lui, avait oublié de le faire : ses quatre cartes
+     s'affichaient sans mise en forme. */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  .stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+  }
+  .stat-card__icon {
+    flex: none;
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+    border-radius: 10px;
+    background: var(--cream-100);
+    color: var(--gray-500);
+  }
+  .stat-card__icon--green  { background: #dcfce7; color: #15803d; }
+  .stat-card__icon--rose   { background: #fee2e2; color: #b91c1c; }
+  .stat-card__icon--blue   { background: #dbeafe; color: #1d4ed8; }
+  .stat-card__icon--purple { background: #ede9fe; color: #6d28d9; }
+  .stat-card__body { min-width: 0; }
+  .stat-card__value {
+    margin: 0;
+    font-size: 1.25rem; font-weight: 700; color: #2d2a28;
+    line-height: 1.2;
+  }
+  .stat-card__label {
+    margin: 2px 0 0;
+    font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gray-400);
+  }
+
+  /* ── Barre de filtres (au-dessus d'un tableau) ── */
+  .filters-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-3);
+  }
+
+  /* ── Utilitaires de tableau ──
+     Le vocabulaire que les écrans Achats et Mouvements de stock employaient
+     sans qu'il existe nulle part : leurs tableaux s'affichaient bruts. */
+  .text-right   { text-align: right; }
+  .text-muted   { color: var(--gray-400); }
+  .text-sm      { font-size: 0.75rem; }
+  .font-medium  { font-weight: 500; color: #2d2a28; }
+  .font-semibold{ font-weight: 600; color: #2d2a28; }
+
+  /* ── Champs de formulaire en grille (modales de saisie) ── */
+  .field { display: flex; flex-direction: column; }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+  @media (max-width: 560px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  /* ── Pagination admin (compacte) ── */
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px var(--space-3);
+    border-top: 1px solid var(--cream-200);
+    background: var(--cream-50);
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .pagination p { margin: 0; }
+  .pagination__left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .pagination__perpage {
+    height: 28px !important;
+    padding: 2px 6px !important;
+    font-size: 0.75rem !important;
+    width: auto;
+    min-width: 100px;
+  }
+  .pagination__total {
+    color: var(--gray-500);
+    white-space: nowrap;
+  }
+  .pagination__actions {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+  }
+  .pagination .btn-sm {
+    min-width: 28px;
+    padding: 3px 8px !important;
+    font-size: 0.75rem !important;
+    height: 28px !important;
+    line-height: 1.2;
+  }
+  .pagination__ellipsis {
+    pointer-events: none;
+    opacity: 0.5;
+    background: transparent !important;
+    border-color: transparent !important;
+  }
+
+  /* ── Form error ── */
+  .form-error {
+    color: #b91c1c;
+    font-size: 0.8125rem;
+    margin-top: var(--space-1);
+  }
+
+/* ═══════════════════════════════════════════════════════════
+   Modales admin — styles globaux (Teleport to="body")
+   ═══════════════════════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal, 1000);
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  backdrop-filter: blur(4px);
+}
+.modal {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow: auto;
+  box-shadow: var(--shadow-lg);
+}
+.modal--sm { max-width: 420px; }
+.modal--lg { max-width: 680px; }
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--cream-200);
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1;
+}
+.modal__header h2 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--gray-800);
+}
+.modal__close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  color: var(--gray-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+.modal__close:hover { background: var(--cream-200); color: var(--gray-700); }
+
+.modal__body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.modal__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.modal__full { grid-column: 1 / -1; }
+
+.modal__footer {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  padding-top: var(--space-2);
+}
+.modal__footer .btn { min-width: 100px; justify-content: center; }
+
+/* ── Transitions globales ── */
+.page-enter-active, .page-leave-active { transition: opacity 0.18s ease, transform 0.18s ease; }
+.page-enter-from { opacity: 0; transform: translateY(6px); }
+.page-leave-to   { opacity: 0; transform: translateY(-4px); }
+
+.overlay-enter-active, .overlay-leave-active { transition: opacity 0.25s ease; }
+.overlay-enter-from, .overlay-leave-to       { opacity: 0; }
+.drawer-enter-active, .drawer-leave-active   { transition: transform 0.3s cubic-bezier(.4,0,.2,1); }
+.drawer-enter-from, .drawer-leave-to         { transform: translateX(100%); }
+
+/* ══════════════════════════════════════════════════════════════
+   Inputs — défini HORS de @layer pour battre le reset * { padding:0 }
+   Pill form · taille medium (≈ 40 px) · crème → blanc au focus
+   ══════════════════════════════════════════════════════════════ */
+.input,
+input.input,
+textarea.input,
+select.input {
+  width: 100%;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--cream-300);
+  background: var(--cream-50);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--gray-800);
+  outline: none;
+  line-height: 1.5;
+  transition:
+    border-color var(--transition-fast),
+    background   var(--transition-fast),
+    box-shadow   var(--transition-fast);
+}
+/* Variante compacte, pour les barres de filtres au-dessus d'un tableau.
+   Définie ici et non dans @layer : `.input` l'est aussi, et une regle en
+   couche perdrait contre son `width: 100%` — les filtres s'empilaient alors
+   sur toute la largeur de l'écran. */
+.input--sm,
+input.input--sm,
+select.input--sm {
+  width: auto;
+  min-width: 150px;
+  max-width: 220px;
+  padding: 7px 14px;
+  font-size: 0.8125rem;
+}
+
+.input::placeholder {
+  color: var(--gray-400);
+  font-style: italic;
+  opacity: 1;
+}
+.input:hover:not(:disabled):not(:focus) {
+  border-color: var(--rose-200);
+  background: #fff;
+}
+.input:focus {
+  background: #fff;
+  border-color: var(--rose-400);
+  box-shadow: 0 0 0 3px rgba(var(--rose-500-rgb), 0.10);
+}
+.input:disabled {
+  background: var(--cream-100);
+  color: var(--gray-400);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Select — flèche rose, padding-right pour éviter l'overlap */
+select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23e8336d' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 42px;
+  cursor: pointer;
+}
+
+/* Options du select — fond blanc + sélection rose */
+select option {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--gray-800);
+  background: #fff;
+  padding: 8px 12px;
+}
+select option:checked {
+  background: var(--rose-50);
+  color: var(--rose-700);
+}
+select option:disabled {
+  color: var(--gray-400);
+}
+
+/* Textarea — radius modéré, pill sur plusieurs lignes est inconfortable */
+textarea.input {
+  border-radius: var(--radius-md);
+  padding: 11px 18px;
+  line-height: 1.65;
+  resize: vertical;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Checkbox & Radio — aux couleurs de la boutique
+   Remplacement complet du rendu natif navigateur
+   ══════════════════════════════════════════════════════════════ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  /* Supprimer le style natif */
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* Dimensions & forme */
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  vertical-align: middle;
+
+  /* Fond & bordure */
+  background: var(--cream-50);
+  border: 1.5px solid var(--cream-300);
+
+  /* Transitions */
+  transition:
+    border-color  var(--transition-fast),
+    background    var(--transition-fast),
+    box-shadow    var(--transition-fast);
+}
+
+/* Hover */
+input[type="checkbox"]:hover:not(:disabled),
+input[type="radio"]:hover:not(:disabled) {
+  border-color: var(--rose-300);
+  background: var(--rose-50);
+}
+
+/* Focus clavier */
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid var(--rose-400);
+  outline-offset: 2px;
+}
+
+/* Désactivé */
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Checkbox ─────────────────────────────────────── */
+input[type="checkbox"] {
+  border-radius: 5px;
+}
+
+/* Coché */
+input[type="checkbox"]:checked {
+  background: var(--rose-500);
+  border-color: var(--rose-500);
+}
+
+/* Coche SVG inline (✓) */
+input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 11px 11px;
+}
+
+/* État indéterminé */
+input[type="checkbox"]:indeterminate {
+  background: var(--rose-300);
+  border-color: var(--rose-300);
+}
+input[type="checkbox"]:indeterminate::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 3px; right: 3px;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  transform: translateY(-50%);
+}
+
+/* ── Radio ────────────────────────────────────────── */
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+/* Sélectionné */
+input[type="radio"]:checked {
+  background: #fff;
+  border-color: var(--rose-500);
+  border-width: 2px;
+  box-shadow: inset 0 0 0 4px var(--rose-500);
+}
+
+/* ── Halo rose sur check/select ─────────────────── */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  box-shadow: 0 0 0 3px rgba(var(--rose-500-rgb), 0.12);
+}
+input[type="radio"]:checked {
+  box-shadow: 0 0 0 3px rgba(var(--rose-500-rgb), 0.12), inset 0 0 0 4px var(--rose-500);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Mobile — anti-zoom iOS au focus
+   Safari (et Chrome iOS) zoome automatiquement sur un champ dont la
+   taille de police calculée est < 16px. Nos inputs sont à ~15px, ce
+   qui provoque un zoom disgracieux à chaque focus (checkout, login…).
+   On force 16px sur tous les champs saisissables en mobile. Le rendu
+   desktop reste inchangé.
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .input,
+  input.input,
+  textarea.input,
+  select.input,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}

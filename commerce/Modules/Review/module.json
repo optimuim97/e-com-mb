@@ -1,0 +1,12 @@
+{
+    "name": "Review",
+    "alias": "review",
+    "description": "Avis & notes clients — système de revues produits avec modération admin",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Review\\Providers\\ReviewServiceProvider"
+    ],
+    "aliases": {},
+    "files": []
+}

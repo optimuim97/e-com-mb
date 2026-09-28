@@ -1,0 +1,18 @@
+.git
+.github
+.idea
+.env
+.env.local
+.env.docker
+node_modules
+vendor
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+# Uploads : montés depuis l'hôte, jamais figés dans l'image
+storage/app/public/*
+bootstrap/cache/*
+*.log
+.phpunit.result.cache
+tests/
